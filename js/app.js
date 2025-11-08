@@ -1,4 +1,19 @@
 const routes = {
+  "/home": `
+    <section id="Home" class="section">
+    <div class="container">
+        <h1 class="section-title">Home Page</h1>
+        <p class="section-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium,
+            magnam? Autem, deleniti ut voluptate quos culpa ex unde dolorem, ratione, esse eveniet fugiat
+            voluptas ad? Sapiente maiores dicta architecto velit iusto in alias, excepturi quidem perspiciatis
+            illo libero. Dicta enim quasi recusandae reprehenderit architecto nobis corrupti explicabo sit nisi
+            repellendus? Nemo explicabo modi culpa quisquam repellat nesciunt expedita neque, provident sequi.
+            Corporis cupiditate, ullam dolorem nulla pariatur amet laboriosam odio corrupti nisi quo, vel alias
+            ducimus a harum deserunt consequatur repellendus asperiores recusandae culpa? Nobis cumque similique
+            aliquid! Eum, officiis. Architecto dolores est ducimus assumenda cupiditate ipsa odio sunt ex?</p>
+    </div>
+</section>
+  `,
   "/products": `
   <section id="Products" class="section">
     <div class="container">
@@ -114,33 +129,28 @@ const routes = {
                 </form>
             </div>
         </section>
+  `,
+  "404": `
+      <h2>404 nie znaleziono strony<h2>
+      <p>Nie ma takiej strony.</p>
   `
 }
 
-// Funkcja renderująca odpowiednią stronę na podstawie hash
 function renderRoute() {
   const pageContentContainer = document.getElementById("page-content-container");
 
-  // Jeśli hash jest pusty, traktujemy to jak /home
-  const hash = window.location.hash || "#/home";
-
-  // Usuwamy znak #, zostaje np. "/home"
+  const hash = window.location.hash || "404";
   const path = hash.slice(1);
+  const page = routes[path] || routes["404"];
 
-  const page = routes[path];
-
-  if (page) {
-    pageContentContainer.innerHTML = page;
-  } else {
-    pageContentContainer.innerHTML = `
-      <h2>404 nie znaleziono strony<h2>
-      <p>Nie ma takiej strony.</p>
-    `;
-  }
+  pageContentContainer.innerHTML = page;
 }
 
-// Reaguj na zmianę hash w pasku adresu
+function firstRender() {
+  const pageContentContainer = document.getElementById("page-content-container")
+  pageContentContainer.innerHTML = routes["/home"];
+}
+
 window.addEventListener("hashchange", renderRoute);
 
-// Pierwsze renderowanie po załadowaniu strony
-window.addEventListener("DOMContentLoaded", renderRoute);
+window.addEventListener("DOMContentLoaded", firstRender);
