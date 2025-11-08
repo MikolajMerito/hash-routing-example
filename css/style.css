@@ -1,0 +1,167 @@
+:root {
+    --color-accent: hsl(158, 36%, 37%);
+    --color-accent-dark: hsl(158, 36%, 17%);
+    --light-background: hsl(30, 38%, 92%);
+
+    --headings-text-color: hsl(212, 21%, 14%);
+    --main-text-color: hsl(228, 12%, 48%);
+    --White: hsl(0, 0%, 100%);
+
+    --ff-primary: 'Montserrat', sans-serif;
+    --ff-accent: 'Fraunces', serif;
+}
+
+/**********
+ CSS Resets 
+ ***********/
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+
+/**************
+ General Styles
+ **************/
+
+body {
+    font-family: var(--ff-primary);
+    color: var(--main-text-color);
+}
+
+header {
+    position: sticky;
+    top: 0;
+}
+
+.nav-bar {
+    background-color: var(--color-accent-dark);
+    padding-block: 0.075em;
+    opacity: 0.8;
+}
+
+.nav-list {
+    display: flex;
+    color: var(--White);
+    gap: 2em;
+}
+
+.section {
+    margin-block: 2em;
+    scroll-margin-top: 5em;
+}
+
+.section-title {
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--color-accent-dark);
+    padding: 0.125em 0.5em;
+    margin-bottom: 1em;
+}
+
+.container {
+    max-width: 1088px;
+    margin-inline: auto;
+    padding-inline: 2rem;
+}
+
+.product-grid {
+    display: grid;
+    gap: 0.125rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.card {
+    aspect-ratio: 1 / 1.5;
+    border: 3px solid var(--color-accent);
+}
+
+.card__img {
+    width: 100%;
+    aspect-ratio: 1 / 1.25;
+    object-fit: cover;
+}
+
+.card__content {
+    background: var(--White);
+    align-self: flex-end;
+    margin: 0.5rem 0.5rem 2rem;
+    padding: 0.5rem;
+    box-shadow: 0 0.25rem 1rem rgba(0 0 0 / 0.1);
+}
+
+.card__title {
+    font-size: 1.25rem;
+    line-height: 1.1;
+    color: var(--headings-text-color)
+}
+
+.card__price {
+    font-size: 1.75rem;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2em;
+    padding: 2em;
+}
+
+.contact-section-img {
+    object-fit: cover;
+    max-height: 300px;
+}
+
+@media (min-width: 60em) {
+    .card__img {
+        aspect-ratio: 1 / 1;
+    }
+}
